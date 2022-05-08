@@ -3,7 +3,7 @@ from random import randint
 class Calculator:
     """This class is responsible for performing integer calculations."""
 
-    def __init__(a, b, operator) -> None:
+    def __init__() -> None:
         pass
 
     @staticmethod
