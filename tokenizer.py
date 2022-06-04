@@ -58,3 +58,4 @@ class Tokenizer(DiceRoller):
                 while len(tokens) > 0:
                     items.insert(i, tokens.pop())
         return items
+

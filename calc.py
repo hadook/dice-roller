@@ -1,9 +1,9 @@
 from roll import Roll
 
 
+"""This class is responsible for performing integer calculations."""
 class Calculator:
-    """This class is responsible for performing integer calculations."""
-
+    
     @staticmethod
     def add(a: int, b: int) -> int:
         return a + b
@@ -62,3 +62,4 @@ class Calculator:
                 if x <= target:
                     result += 1
         return result
+

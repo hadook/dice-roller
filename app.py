@@ -1,6 +1,7 @@
 
+
+"""This class represents the main application instance."""
 class App:
-    """This class represents the main application instance."""
 
     def __init__(self) -> None:
         self.running = True
@@ -23,3 +24,4 @@ class App:
 
 if __name__ == "__main__":
     App().run()
+

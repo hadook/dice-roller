@@ -1,11 +1,10 @@
-from typing import List
 from diceroller import DiceRoller
 
 
 """This class validates the tokens and their order"""
 class Validator(DiceRoller):
     
-    # validates the token list on init
+    # validates the token list and converts strings to numbers
     def __init__(self, _tokens: list[str]) -> None:
         self.tokens = _tokens
         self.valid = self.__validate(_tokens)
@@ -45,21 +44,6 @@ class Validator(DiceRoller):
         else:
             return True
 
-    # returns a 3-element sublist of 'tokens' with the index element as the middle one
-    @staticmethod
-    def __get_neighbours(tokens: list[str], idx: int) -> list[str]:
-        neighbours = []
-        if idx == 0:
-            neighbours.append(None)
-        else:
-            neighbours.append(tokens[idx - 1])
-        neighbours.append(tokens[idx])
-        if idx == len(tokens) - 1:
-            neighbours.append(None)
-        else:
-            neighbours.append(tokens[idx + 1])
-        return neighbours
-
     # returns a list with all numeric values (str) converted to int
     @staticmethod
     def __convert_numbers(tokens: list[str]) -> list[str]:
@@ -68,3 +52,4 @@ class Validator(DiceRoller):
                 tokens.pop(i)
                 tokens.insert(i, int(s))
         return tokens
+

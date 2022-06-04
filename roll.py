@@ -1,7 +1,8 @@
 from random import randint
 
+
+"""Thiss class represents a simple dice roll."""
 class Roll:
-    """Thiss class represents a simple dice roll."""
 
     # rolls the dice and calculates total on init
     def __init__(self, dice: int, sides: int) -> None:
@@ -28,3 +29,4 @@ class Roll:
         for roll in rolls:
             total += roll
         return total
+
