@@ -17,6 +17,15 @@ class Roll:
     # returns the object represented as an integer
     def __int__(self):
         return self.total
+    
+    # alternative constructor
+    @classmethod
+    def from_list(cls, rolls: list[int]):
+        roll = cls(0, 0)
+        roll.exp = ''
+        roll.rolls = rolls
+        roll.total = cls.__get_total(rolls)
+        return roll
 
     # returns a list of dice results from a single roll
     @staticmethod

@@ -14,6 +14,7 @@ class Parser:
     def __init__(self, exp: str) -> None:
         t = Tokenizer(exp)
         v = Validator(t.tokens)
+        self.result = None
         if v.valid:
             self.result = self.evaluate(v.tokens)
 
@@ -52,7 +53,6 @@ class Parser:
                 return x
         return None
 
-    
     # calculates a simple operation with 2 arguments
     def __calculate(self, left, operator: str, right):
         if operator in self.operators_1 or operator in self.operators_2:

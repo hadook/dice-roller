@@ -19,7 +19,8 @@ class Validator(DiceRoller):
             return False
         if not self.__merge_cs():
             return False
-        self.__convert_numbers()
+        if not self.__convert_numbers():
+            return False
         return True
 
     # returns True if all tokens are allowed_tokens
@@ -57,9 +58,13 @@ class Validator(DiceRoller):
         return True
 
     # returns a list with all numeric values (str) converted to int
-    def __convert_numbers(self) -> None:
+    def __convert_numbers(self) -> bool:
         for i, s in enumerate(self.tokens):
             if s.isdecimal():
-                self.tokens.pop(i)
-                self.tokens.insert(i, int(s))
+                if int(s) < 0:
+                    return False
+                else:
+                    self.tokens.pop(i)
+                    self.tokens.insert(i, int(s))
+        return True
 

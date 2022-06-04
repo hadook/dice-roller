@@ -28,17 +28,17 @@ class Calculator:
     def keep_high(r: Roll, n: int) -> int:
         result = 0
         rolls = sorted(r.rolls, reverse=True)
-        for i in range(min(len(rolls), int(n))):
-            result += rolls[i]
-        return result
+        for i in range(len(rolls) - int(n)):
+            rolls.pop()
+        return Roll.from_list(rolls)
 
     @staticmethod
     def keep_low(r: Roll, n: int) -> int:
         result = 0
         rolls = sorted(r.rolls, reverse=False)
-        for i in range(min(len(rolls), int(n))):
-            result += rolls[i]
-        return result
+        for i in range(len(rolls) - int(n)):
+            rolls.pop()
+        return Roll.from_list(rolls)
 
     @staticmethod
     def count_success(r: Roll, cs: str) -> int:
