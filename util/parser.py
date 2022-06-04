@@ -70,15 +70,18 @@ class Parser:
                     return calc.divide(left, right)
             elif operator == 'd':
                 if (isinstance(left, int) or isinstance(left, Roll)) and (isinstance(right, int) or isinstance(right, Roll)):
-                    roll = calc.roll_dice(left, right)
-                    print(roll)
-                    return roll
+                    if int(left) >= 0 and int(right) >= 0:
+                        roll = calc.roll_dice(left, right)
+                        print(roll)
+                        return roll
             elif operator == 'kh':
                 if isinstance(left, Roll) and (isinstance(right, int) or isinstance(right, int)):
-                    return calc.keep_high(left, right)
+                    if int(right) >= 0:
+                        return calc.keep_high(left, right)
             elif operator == 'kl':
                 if isinstance(left, Roll) and (isinstance(right, int) or isinstance(right, int)):
-                    return calc.keep_low(left, right)
+                    if int(right) >= 0:
+                        return calc.keep_low(left, right)
             elif operator == 'cs':
                 if isinstance(left, Roll) and isinstance(right, str):
                     return calc.count_success(left, right)
