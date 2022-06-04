@@ -12,7 +12,7 @@ class Roll:
 
     # returns the object represented as a string
     def __repr__(self) -> str:
-        return f'{self.exp} : {self.rolls}'
+        return f'{self.exp}\t: {self.total}\t: {self.rolls}'
     
     # returns the object represented as an integer
     def __int__(self):

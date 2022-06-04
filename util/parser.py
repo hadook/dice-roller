@@ -1,15 +1,8 @@
+from util.diceroller import DiceRoller
+from util.tokenizer import Tokenizer
+from util.validator import Validator
 from util.roll import Roll
 from util.calc import Calculator as calc
-
-"""
-
-    2*3d6*4
-    4 d 6 cs =6 d 3 + 2
-    4d6 cs=6 + 2
-
-    (() (()))
-
-"""
 
 
 """This class parses the tokens list and evaluates the symbols."""
@@ -18,11 +11,18 @@ class Parser:
     operators_1 = ['*', '/', 'd', 'kh', 'kl', 'cs']
     operators_2 = ['+', '-']
 
-    def __init__(self, tokens: list[str]) -> None:
-        self.tokens = self.evaluate(tokens.copy())
+    def __init__(self, exp: str) -> None:
+        t = Tokenizer(exp)
+        v = Validator(t.tokens)
+        if v.valid:
+            self.result = self.evaluate(v.tokens)
+
+    # returns the object represented as a string
+    def __repr__(self) -> str:
+        return f'Result\t: {self.result}'
 
     # evaluates the tokenized expression to a number
-    def evaluate(self, _tokens: list[str]) -> list[int]:
+    def evaluate(self, _tokens: list[str]):
         tokens = _tokens.copy()
 
         # resolve groups: ()
@@ -45,14 +45,12 @@ class Parser:
             left, right = self.__get_neighbours(tokens, i)
             tokens[i-1:i+2] = [self.__calculate(left, operator, right)]
         
-        # return total
-        total = 0
-        for x in tokens:
+        # return result
+        if len(tokens) == 1:
+            x = tokens[0]
             if isinstance(x, Roll) or isinstance(x, int):
-                total += int(x)
-            else:
-                return None
-        return total
+                return x
+        return None
 
     
     # calculates a simple operation with 2 arguments
