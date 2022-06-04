@@ -6,29 +6,29 @@ class Calculator:
     
     @staticmethod
     def add(a: int, b: int) -> int:
-        return a + b
+        return int(a) + int(b)
 
     @staticmethod
     def substract(a: int, b: int) -> int:
-        return a - b
+        return int(a) - int(b)
 
     @staticmethod
     def multiply(a: int, b: int) -> int:
-        return a * b
+        return int(a) * int(b)
 
     @staticmethod
     def divide(a: int, b: int) -> int:
-        return a // b
+        return int(a) // int(b)
 
     @staticmethod
     def roll_dice(n: int, d: int) -> Roll:
-        return Roll(n, d)
+        return Roll(int(n), int(d))
     
     @staticmethod
     def keep_high(r: Roll, n: int) -> int:
         result = 0
         rolls = sorted(r.rolls, reverse=True)
-        for i in range(min(len(rolls), n)):
+        for i in range(min(len(rolls), int(n))):
             result += rolls[i]
         return result
 
@@ -36,7 +36,7 @@ class Calculator:
     def keep_low(r: Roll, n: int) -> int:
         result = 0
         rolls = sorted(r.rolls, reverse=False)
-        for i in range(min(len(rolls), n)):
+        for i in range(min(len(rolls), int(n))):
             result += rolls[i]
         return result
 

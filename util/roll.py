@@ -13,6 +13,10 @@ class Roll:
     # returns the object represented as a string
     def __repr__(self) -> str:
         return f'{self.exp} : {self.rolls}'
+    
+    # returns the object represented as an integer
+    def __int__(self):
+        return self.total
 
     # returns a list of dice results from a single roll
     @staticmethod
