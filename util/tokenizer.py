@@ -1,4 +1,4 @@
-from diceroller import DiceRoller
+from util.diceroller import DiceRoller
 
 
 """This class tokenizes the user input expression into a set of tokens."""

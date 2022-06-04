@@ -1,4 +1,4 @@
-from roll import Roll
+from util.roll import Roll
 
 
 """This class is responsible for performing integer calculations."""
@@ -41,7 +41,12 @@ class Calculator:
         return result
 
     @staticmethod
-    def count_success(r: Roll, operator: str, target: int) -> int:
+    def count_success(r: Roll, cs: str) -> int:
+        for i, c in enumerate(cs):
+            if c.isdecimal():
+                operator = cs[:i]
+                target = int(cs[i:])
+                break
         result = 0
         if operator == '=':
             result = r.rolls.count(target)

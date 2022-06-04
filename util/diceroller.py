@@ -1,6 +1,6 @@
 
 
-"""Base class that implements common attributes for the dice roller sub-classes"""
+"""Base class that implements common attributes for the dice roller sub-classes."""
 class DiceRoller:
     
     valid_tokens = [
